@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<style>
+body, html {
+    width: 100%;
+    height: 100%;
+    
+}
+.navbar {
+    height: 40px;
+    background-color: aquamarine;
+    border-style: solid; 
+    text-align: center;
+}
+
+.theImages {
+    display:  flex;
+    flex-wrap: wrap;
+    justify-content: center; 
+   
+}
+
+
+.pics {
+  display: flex;
+  align-items: center;
+  justify-content: space-around;
+  height: 250px;
+  width: 250px; 
+
+}
+
+.listItem{
+    display: flex;
+    flex-direction: column;
+    margin: 20px;
+}
+
+.image {
+    object-fit: cover;
+    width: 100%;
+    height: 100%;
+}
+
+.image:hover{
+    transform: translate(2px, 2px);
+    
+}
+
+p {
+    font-family: sans-serif;
+    text-align: center;
+}
+
+.showImage {
+    display: flex;
+    transform: scale(3);
+    transform-origin: top left;
+}
+
+.lightBox{
+    display: none;
+    
+
+}
+
+.lightBoxOn{
+    height: 100vh;
+    width: 100vw;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: fixed;
+    background-color: rgba(200,200,200, .8 );
+    z-index: 5;
+}
+
+ 
+ /*this class reduces image size */
+.lightBoxContainer { 
+    height: 80%;
+    width: 80%;
+}
+
+.lightBoxImage {
+    object-fit: contain;
+    height: 100%;
+    width: 100%;
+}
+
+
+</style>
+<body>
+<div class="lightBox">
+    <div class="lightBoxContainer">
+        <img class="lightBoxImage">
+    </div>
+</div>
+    <nav class="navbar">"instagram"</nav>
+<div>
+    <ul class="theImages">
+    </ul>
+</div>
+
+<script src="./scripts/main.js"></script>    
+      
+</body>
+</html>
