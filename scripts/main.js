@@ -8,24 +8,26 @@ var myPics = [
 var lightBox = document.querySelector('.lightBox'); // div tag(set to display none as default)
 var lightBoxImage = document.querySelector('.lightBoxImage'); //image tag
 var container = document.querySelector('.theImages'); //ul tag 
-
+var indexVal = 'data-index'
 
 var lightBoxOn = function (event) {
   var index = event.target.getAttribute("data-index")
   var image = myPics[index] 
   lightBox.setAttribute("class", 'lightBoxOn')
   lightBoxImage.setAttribute("src", (image.url)) // to the image tag
-  console.log(event);
+  
 }
 
 var lightBoxOff = function(){   //this actually turns OFF the lightbox
   lightBox.setAttribute("class", "lightBox")
-  
 }
 
-for (var index = 0; index < myPics.length; index++) {
 
-var image = myPics[index]
+
+
+myPics.forEach(function(image, index)  {
+  
+
   var newImage = document.createElement('img');
   newImage.setAttribute('src', image.url );
   newImage.classList.add('image');
@@ -49,11 +51,8 @@ var image = myPics[index]
   imageContainer.addEventListener('click', lightBoxOn);
   container.appendChild(listItem);
   
-}
+  
+});
 lightBox.addEventListener("click", lightBoxOff);
 
-
-
-
-
-
+ 
