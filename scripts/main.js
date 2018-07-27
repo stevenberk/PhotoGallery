@@ -34,7 +34,8 @@ myPics.forEach(function(image, index)  {
   imageContainer.addClass('pics');
 
   var caption = $('<p>');
-  caption.textContent = image.caption;
+  caption.text(image.caption);
+
 
   var listItem = $('<li>');
   listItem.addClass('listItem');
