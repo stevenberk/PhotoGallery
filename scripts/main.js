@@ -5,54 +5,49 @@ var myPics = [
   { caption: "Yeah I travel to places", url: "images/bagan.jpg" },
   { caption: "SEC Sportsball Fan", url: "images/SECfan.jpg" }
 ];
-var lightBox = document.querySelector('.lightBox'); // div tag(set to display none as default)
-var lightBoxImage = document.querySelector('.lightBoxImage'); //image tag
-var container = document.querySelector('.theImages'); //ul tag 
-var indexVal = 'data-index'
+var lightBox = $('.lightBox'); // div tag(set to display none as default)
+var lightBoxImage = $('.lightBoxImage'); //image tag
+var container = $('.theImages'); //ol tag 
 
 var lightBoxOn = function (event) {
-  var index = event.target.getAttribute("data-index")
+  var index = $(event.target).attr("data-index") 
   var image = myPics[index] 
-  lightBox.setAttribute("class", 'lightBoxOn')
-  lightBoxImage.setAttribute("src", (image.url)) // to the image tag
-  
+  lightBox.attr("class", 'lightBoxOn')
+  lightBoxImage.attr("src", (image.url)) // to the image tag
 }
 
 var lightBoxOff = function(){   //this actually turns OFF the lightbox
-  lightBox.setAttribute("class", "lightBox")
+  lightBox.attr("class", "lightBox")
 }
 
-
+var indexVal = [];
 
 
 myPics.forEach(function(image, index)  {
   
+  var newImage = $('<img>');
+  newImage.attr('src', image.url );
+  newImage.addClass('image');
+  newImage.attr('data-index', index);
 
-  var newImage = document.createElement('img');
-  newImage.setAttribute('src', image.url );
-  newImage.classList.add('image');
-  newImage.setAttribute('data-index', index);
+  var imageContainer = $('<div>');
+  imageContainer.addClass('pics');
 
-  var imageContainer = document.createElement('div');
-  imageContainer.classList.add('pics');
-
-  var caption = document.createElement('p');
+  var caption = $('<p>');
   caption.textContent = image.caption;
 
-  var listItem = document.createElement('li');
-  listItem.classList.add('listItem');
+  var listItem = $('<li>');
+  listItem.addClass('listItem');
 
+  imageContainer.append(newImage);
+  listItem.append(imageContainer);
+  listItem.append(caption);
+  imageContainer.on('click', lightBoxOn);
+  container.append(listItem);
 
- 
-
-  imageContainer.appendChild(newImage);
-  listItem.appendChild(imageContainer);
-  listItem.appendChild(caption);
-  imageContainer.addEventListener('click', lightBoxOn);
-  container.appendChild(listItem);
-  
-  
+  indexVal.push(index);
 });
-lightBox.addEventListener("click", lightBoxOff);
+lightBox.on("click", lightBoxOff);
+
 
  
